@@ -1,0 +1,16 @@
+import { Pool } from "pg";
+
+export const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+pool.on('connect', (client) => {
+  client.query('SET search_path TO public');
+});
+
+// Test connection
+pool.query('SELECT * FROM public.services').then(res => {
+  console.log('✅ Connected! Services found:', res.rows.length);
+}).catch(err => {
+  console.error('❌ DB Error:', err.message);
+});
