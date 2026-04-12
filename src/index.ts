@@ -272,7 +272,7 @@ app.post("/appointments", async (req, res) => {
       [staff_user_id, end_time, start_time]
     );
 
-    if (conflict.rowCount > 0) {
+    if ((conflict.rowCount ?? 0) > 0) {
       return res.status(409).json({
         error: "Staff already has an appointment at this time"
       });
