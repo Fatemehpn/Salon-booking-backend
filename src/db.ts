@@ -4,7 +4,7 @@ import dns from 'dns';
 dns.setDefaultResultOrder('ipv4first');
 
 export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: 'postgresql://postgres.dcvenxfzqslbngohlhom:1wk6rmIr9j11DdXE@aws-0-us-west-1.pooler.supabase.com:6543/postgres',
   ssl: { rejectUnauthorized: false }
 });
 
